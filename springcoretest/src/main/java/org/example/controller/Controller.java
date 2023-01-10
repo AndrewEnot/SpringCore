@@ -61,7 +61,8 @@ public class Controller {
             cart.info();
           }
           case 2 -> {
-            cartAdd(cart);
+            cartAdd(cart, context.getBean("productRepository",
+                ProductRepository.class));
             cart.info();
           }
           case 9 -> {
@@ -82,10 +83,10 @@ public class Controller {
     return resultCart;
   }
 
-  private static void cartAdd(Cart cart) {
+  private static void cartAdd(Cart cart, ProductRepository repository) {
     if (cart != null) {
       String addId = scanner("Enter Id of product you want to Add to Cart: ");
-      cart.addProductToCartById(Integer.parseInt(addId));
+      cart.addProductToCartById(Integer.parseInt(addId), repository);
     }
   }
 

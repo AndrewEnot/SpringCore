@@ -17,11 +17,9 @@ import lombok.Setter;
 @Setter
 public class Cart {
 
-  private ProductRepository repository;
-
   private List<Product> cartList;
 
-  public void addProductToCartById(int id) {
+  public void addProductToCartById(int id, ProductRepository repository) {
     cartList.add(repository.getById(id));
   }
 
